@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c231rgxw06aj4" path="res://player.png" id="1_ntynm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_caw6y"]
-radius = 29.1548
+radius = 24.0208
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_l3a2w")
@@ -19,3 +19,12 @@ texture = ExtResource("1_ntynm")
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(999999, 1)
+
+[node name="Reload_ammo" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Reload_ammo" to="." method="_on_reload_ammo_timeout"]

@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cci2koy7k1tab"]
+[gd_scene load_steps=7 format=3 uid="uid://cci2koy7k1tab"]
 
 [ext_resource type="PackedScene" uid="uid://dn2lxnpoe2sa3" path="res://player.tscn" id="1_7vjd5"]
 [ext_resource type="Texture2D" uid="uid://xxf67875b5uj" path="res://floor.jpg" id="1_rxvtt"]
+[ext_resource type="Script" path="res://Enemies.gd" id="3_csidb"]
+[ext_resource type="PackedScene" uid="uid://bbe1t1rxs5dxq" path="res://enemy.tscn" id="3_hc2pc"]
+[ext_resource type="PackedScene" uid="uid://c0wf3dxajehif" path="res://invisible_wall.tscn" id="5_l5lm2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0nha7"]
 
 [node name="Poziom" type="Node2D"]
 
@@ -9,6 +14,46 @@
 texture_repeat = 2
 texture = ExtResource("1_rxvtt")
 region_enabled = true
-region_rect = Rect2(-3352.12, -1908.45, 7268.42, 4097.5)
+region_rect = Rect2(-20000, -812.853, 20000, 20000)
 
 [node name="player" parent="." instance=ExtResource("1_7vjd5")]
+
+[node name="SpawnArea" type="ReferenceRect" parent="player"]
+offset_left = -684.0
+offset_top = -418.0
+offset_right = 714.0
+offset_bottom = 421.0
+
+[node name="Enemies" type="Node2D" parent="."]
+script = ExtResource("3_csidb")
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("3_hc2pc")]
+position = Vector2(387, -126)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="invisiblewalls" type="Node2D" parent="."]
+
+[node name="Invisible_wall_1" parent="invisiblewalls" instance=ExtResource("5_l5lm2")]
+position = Vector2(0, 7500)
+
+[node name="Invisible_wall_2" parent="invisiblewalls" instance=ExtResource("5_l5lm2")]
+position = Vector2(0, -7500)
+
+[node name="Invisible_wall_3" parent="invisiblewalls" instance=ExtResource("5_l5lm2")]
+position = Vector2(7500, 0)
+rotation = 1.5708
+
+[node name="Invisible_wall_4" parent="invisiblewalls" instance=ExtResource("5_l5lm2")]
+position = Vector2(-7500, 0)
+rotation = 1.5708
+
+[node name="Allowed_to_spawn_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Allowed_to_spawn_area"]
+scale = Vector2(725, 725)
+shape = SubResource("RectangleShape2D_0nha7")
+
+[connection signal="timeout" from="Timer" to="Enemies" method="_on_timer_timeout"]
