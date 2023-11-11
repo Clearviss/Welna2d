@@ -12,7 +12,20 @@ func _process(delta):
 
 
 func _on_timer_timeout():
-	var enemy = Enemy.instantiate()
-	var spawnarea = $"../player/SpawnArea" as ReferenceRect
-	add_child(enemy)
-	enemy.position = spawnarea.position + Vector2(randf() * spawnarea.size.x, randf() * spawnarea.size.y)
+	var count = $".".get_child_count()
+	if (count > 150):
+		pass
+	else:
+		var enemy = Enemy.instantiate()
+		var x1 = $"../player/SpawnEnemy_x_1"
+		var x2 = $"../player/SpawnEnemy_x_2"
+		var y1 = $"../player/SpawnEnemy_y_1"
+		var y2 = $"../player/SpawnEnemy_y_2"
+		x1.position = Vector2($"../player".position.x + (randf()*2000), $"../player".position.y + 1000)
+		x2.position = Vector2($"../player".position.x + (randf()*2000), $"../player".position.y - 1000)
+		y1.position = Vector2($"../player".position.x + 1000, $"../player".position.y - (randf()*2000))
+		y2.position = Vector2($"../player".position.x - 1000, $"../player".position.y - (randf()*2000))
+		var final_pos = [x1.position,x2.position,y1.position,y2.position]
+	
+		enemy.position = final_pos[randf() * final_pos.size()]
+		add_child(enemy)
