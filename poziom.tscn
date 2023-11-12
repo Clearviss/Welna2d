@@ -1,13 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://cci2koy7k1tab"]
+[gd_scene load_steps=12 format=3 uid="uid://cci2koy7k1tab"]
 
 [ext_resource type="PackedScene" uid="uid://dn2lxnpoe2sa3" path="res://player.tscn" id="1_7vjd5"]
 [ext_resource type="Script" path="res://poziom.gd" id="1_il06s"]
 [ext_resource type="Texture2D" uid="uid://xxf67875b5uj" path="res://floor.jpg" id="1_rxvtt"]
 [ext_resource type="Script" path="res://Enemies.gd" id="3_csidb"]
-[ext_resource type="PackedScene" uid="uid://bbe1t1rxs5dxq" path="res://enemy.tscn" id="3_hc2pc"]
 [ext_resource type="PackedScene" uid="uid://c0wf3dxajehif" path="res://invisible_wall.tscn" id="5_l5lm2"]
+[ext_resource type="PackedScene" uid="uid://qdwgveiy687j" path="res://restart.tscn" id="7_peihk"]
+[ext_resource type="Theme" uid="uid://dc3vyxsiw6ydp" path="res://restart.tres" id="8_sqs0p"]
+[ext_resource type="StyleBox" uid="uid://bmfkr6r1x55ss" path="res://unikat.tres" id="9_5xost"]
+[ext_resource type="PackedScene" uid="uid://fle3ahnqc4nv" path="res://canvas_layer.tscn" id="10_xtu8u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0nha7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nyq13"]
+size = Vector2(104, 72)
 
 [node name="Poziom" type="Node2D"]
 script = ExtResource("1_il06s")
@@ -37,9 +43,6 @@ position = Vector2(-703, -2)
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource("3_csidb")
 
-[node name="Enemy" parent="Enemies" instance=ExtResource("3_hc2pc")]
-position = Vector2(387, -126)
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
 autostart = true
@@ -48,23 +51,113 @@ autostart = true
 
 [node name="Invisible_wall_1" parent="invisiblewalls" instance=ExtResource("5_l5lm2")]
 position = Vector2(0, 7500)
+collision_mask = 2
 
 [node name="Invisible_wall_2" parent="invisiblewalls" instance=ExtResource("5_l5lm2")]
 position = Vector2(0, -7500)
+collision_mask = 2
 
 [node name="Invisible_wall_3" parent="invisiblewalls" instance=ExtResource("5_l5lm2")]
 position = Vector2(7500, 0)
 rotation = 1.5708
+collision_mask = 2
 
 [node name="Invisible_wall_4" parent="invisiblewalls" instance=ExtResource("5_l5lm2")]
 position = Vector2(-7500, 0)
 rotation = 1.5708
+collision_mask = 2
 
 [node name="Allowed_to_spawn_area" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Allowed_to_spawn_area"]
 scale = Vector2(725, 725)
 shape = SubResource("RectangleShape2D_0nha7")
 
+[node name="Reset" parent="." instance=ExtResource("7_peihk")]
+visible = false
+
+[node name="Label2" type="Label" parent="Reset"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -251.0
+offset_top = -308.0
+offset_right = 249.0
+offset_bottom = -108.0
+grow_horizontal = 2
+theme = ExtResource("8_sqs0p")
+theme_override_font_sizes/font_size = 150
+text = "R.I.P"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+max_lines_visible = 1
+visible_characters = 17
+visible_ratio = 3.4
+
+[node name="Button2" type="Button" parent="Reset"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = 64.0
+offset_right = 97.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("9_5xost")
+theme_override_styles/hover = ExtResource("9_5xost")
+theme_override_styles/pressed = ExtResource("9_5xost")
+theme_override_styles/disabled = ExtResource("9_5xost")
+theme_override_styles/focus = ExtResource("9_5xost")
+text = "MENU"
+
+[node name="CanvasLayer" parent="." instance=ExtResource("10_xtu8u")]
+
+[node name="Kill_area1" type="Area2D" parent="."]
+position = Vector2(-1242, -623)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kill_area1"]
+position = Vector2(-7323, -131)
+scale = Vector2(20, 1000)
+shape = SubResource("RectangleShape2D_nyq13")
+
+[node name="Kill_area2" type="Area2D" parent="."]
+position = Vector2(-1242, -623)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kill_area2"]
+position = Vector2(9814, 624)
+scale = Vector2(20, 1000)
+shape = SubResource("RectangleShape2D_nyq13")
+
+[node name="Kill_area3" type="Area2D" parent="."]
+position = Vector2(-1242, -623)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kill_area3"]
+position = Vector2(1242, -7985)
+rotation = 1.5708
+scale = Vector2(20, 1000)
+shape = SubResource("RectangleShape2D_nyq13")
+
+[node name="Kill_area4" type="Area2D" parent="."]
+position = Vector2(-1242, -623)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kill_area4"]
+position = Vector2(1242, 9219)
+rotation = 1.5708
+scale = Vector2(20, 1000)
+shape = SubResource("RectangleShape2D_nyq13")
+
 [connection signal="laser" from="player" to="." method="_on_player_laser"]
 [connection signal="timeout" from="Timer" to="Enemies" method="_on_timer_timeout"]
+[connection signal="pressed" from="Reset/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="body_entered" from="Kill_area1" to="." method="_on_kill_area_1_body_entered"]
+[connection signal="body_entered" from="Kill_area2" to="." method="_on_kill_area_2_body_entered"]
+[connection signal="body_entered" from="Kill_area3" to="." method="_on_kill_area_3_body_entered"]
+[connection signal="body_entered" from="Kill_area4" to="." method="_on_kill_area_4_body_entered"]

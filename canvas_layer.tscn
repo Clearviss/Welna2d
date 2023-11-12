@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://fle3ahnqc4nv"]
+
+[ext_resource type="Script" path="res://canvas_layer.gd" id="1_abebe"]
+[ext_resource type="FontFile" uid="uid://cynqo1jaowcow" path="res://clements-morgle-script/Clements Morgle Serif.otf" id="1_h84s8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47x04"]
+bg_color = Color(0.333333, 0, 0, 0.729412)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_abebe")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 18.0
+offset_top = 21.0
+offset_right = 66.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("1_h84s8")
+theme_override_font_sizes/font_size = 50
+text = "Wynik "
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 243.0
+offset_top = 21.0
+offset_right = 283.0
+offset_bottom = 84.0
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(1080, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -23.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/fill = SubResource("StyleBoxFlat_47x04")
+max_value = 5.0
+step = 1.0
+show_percentage = false

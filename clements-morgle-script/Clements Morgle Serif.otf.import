@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://cynqo1jaowcow"
+path="res://.godot/imported/Clements Morgle Serif.otf-e7421432c316a7b384556e3de6a54703.fontdata"
+
+[deps]
+
+source_file="res://clements-morgle-script/Clements Morgle Serif.otf"
+dest_files=["res://.godot/imported/Clements Morgle Serif.otf-e7421432c316a7b384556e3de6a54703.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

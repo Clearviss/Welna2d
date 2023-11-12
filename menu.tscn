@@ -1,0 +1,101 @@
+[gd_scene load_steps=3 format=3 uid="uid://yvo56dsu11aa"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_xdes0"]
+[ext_resource type="Theme" uid="uid://c1neggeg2ag84" path="res://menu.tres" id="2_cs7gn"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xdes0")
+
+[node name="Zasady" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = 52.0
+offset_right = 152.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_cs7gn")
+text = "Zasady
+"
+alignment = 0
+
+[node name="Label2" type="Label" parent="Zasady"]
+layout_mode = 1
+offset_left = 317.0
+offset_top = -63.0
+offset_right = 366.0
+offset_bottom = -41.0
+text = "(WIP/)"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -243.0
+offset_top = 100.0
+offset_right = 243.0
+offset_bottom = 221.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 100
+text = "WoolGra"
+
+[node name="Graj" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -120.0
+offset_right = 152.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_cs7gn")
+text = "Graj"
+alignment = 0
+
+[node name="Ustawienia" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -34.0
+offset_right = 152.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_cs7gn")
+text = "Ustawienia"
+alignment = 0
+icon_alignment = 1
+
+[node name="Label3" type="Label" parent="Ustawienia"]
+layout_mode = 1
+offset_left = 319.0
+offset_top = 114.0
+offset_right = 368.0
+offset_bottom = 136.0
+text = "(WIP/)"
+
+[connection signal="pressed" from="Zasady" to="." method="_on_zasady_pressed"]
+[connection signal="pressed" from="Graj" to="." method="_on_graj_pressed"]
+[connection signal="pressed" from="Ustawienia" to="." method="_on_ustawienia_pressed"]
