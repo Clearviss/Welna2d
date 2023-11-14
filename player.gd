@@ -12,7 +12,8 @@ func _ready():
 
 func _process(delta):
 	
-	var direction = Input.get_vector('move_left',"move_right","move_up","move_down")
+	#var direction = Input.get_vector('move_left',"move_right","move_up","move_down")
+	var direction = Input.get_vector('ui_left',"ui_right","ui_up","ui_down")
 	velocity = direction * 500
 	if (can_move):
 		move_and_slide()
@@ -30,8 +31,8 @@ func _process(delta):
 	
 	
 	
-	var gracz_direction = (get_global_mouse_position() - position).normalized()
-	look_at(get_global_mouse_position())
+	var gracz_direction = (Input.get_vector("ui_left2","ui_right2","ui_up2","ui_down2"))
+	$".".rotation = gracz_direction.angle()
 	
 	if Input.is_action_pressed("primary_action") and shoot and can_shoot:
 		shoot = false
