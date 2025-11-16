@@ -1,14 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbe1t1rxs5dxq"]
+[gd_scene load_steps=4 format=3 uid="uid://bbe1t1rxs5dxq"]
 
 [ext_resource type="Texture2D" uid="uid://dfih0eny0ulhp" path="res://enemy.png" id="1_4hwd4"]
+[ext_resource type="Script" path="res://enemy.gd" id="1_ks015"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p5s2l"]
-radius = 31.0161
+radius = 27.0185
 
 [node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_ks015")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_p5s2l")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_4hwd4")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(9.22337e+17, 0)
