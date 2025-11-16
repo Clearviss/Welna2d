@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://fle3ahnqc4nv"]
+[gd_scene load_steps=7 format=3 uid="uid://fle3ahnqc4nv"]
 
 [ext_resource type="Script" path="res://canvas_layer.gd" id="1_abebe"]
 [ext_resource type="FontFile" uid="uid://cynqo1jaowcow" path="res://clements-morgle-script/Clements Morgle Serif.otf" id="1_h84s8"]
+[ext_resource type="Texture2D" uid="uid://tuo2fpiu7vxh" path="res://shotgun.png" id="3_2y4y5"]
+[ext_resource type="Texture2D" uid="uid://b0miikptubsr6" path="res://karabin.png" id="4_kqdk6"]
+[ext_resource type="Texture2D" uid="uid://cvpd7e3h0luwg" path="res://tekstura.PNG" id="5_p8df7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47x04"]
 bg_color = Color(0.333333, 0, 0, 0.729412)
@@ -42,3 +45,62 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_47x04")
 max_value = 5.0
 step = 1.0
 show_percentage = false
+
+[node name="shotgun" type="TextureRect" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 36.0
+offset_top = -1.0
+offset_right = 206.0
+offset_bottom = 105.0
+grow_horizontal = 2
+scale = Vector2(0.945273, 1)
+texture = ExtResource("3_2y4y5")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="shotgun"]
+layout_mode = 0
+offset_left = 138.584
+offset_top = 66.0
+offset_right = 178.584
+offset_bottom = 106.0
+theme_override_font_sizes/font_size = 30
+text = "2"
+
+[node name="selectshot" type="Sprite2D" parent="shotgun/Label"]
+visible = false
+modulate = Color(1, 1, 1, 0.27451)
+position = Vector2(-53.9527, -13)
+scale = Vector2(0.528948, 0.38)
+texture = ExtResource("5_p8df7")
+
+[node name="Carbine" type="TextureRect" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -175.0
+offset_top = 66.0
+offset_right = -3.0
+offset_bottom = 125.0
+grow_horizontal = 2
+rotation = -0.404916
+texture = ExtResource("4_kqdk6")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Carbine"]
+layout_mode = 0
+offset_left = 125.134
+offset_top = 55.8083
+offset_right = 165.134
+offset_bottom = 95.8083
+rotation = 0.401426
+theme_override_font_sizes/font_size = 30
+text = "1"
+
+[node name="selectcar" type="Sprite2D" parent="Carbine/Label"]
+modulate = Color(1, 1, 1, 0.27451)
+position = Vector2(-48.9439, -16.1709)
+rotation = 0.00349066
+scale = Vector2(0.5, 0.38)
+texture = ExtResource("5_p8df7")

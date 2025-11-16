@@ -38,6 +38,7 @@ func _process(delta):
 		var bullet_startPos = $BulletSpawnPoints.get_children()
 		var selected_fuckme_bullet = bullet_startPos[randi() % bullet_startPos.size()]
 		laser.emit(selected_fuckme_bullet.global_position, gracz_direction)
+	
 	for  body in $hurt.get_overlapping_bodies():
 		if (body.name != "player" and can_behurt):
 			can_behurt = false
