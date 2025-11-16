@@ -10,21 +10,34 @@ radius = 24.0208
 script = ExtResource("1_l3a2w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -6)
 shape = SubResource("CircleShape2D_caw6y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(5, -1)
+position = Vector2(9, -7)
 texture = ExtResource("1_ntynm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -7500
+limit_top = -7500
+limit_right = 7500
+limit_bottom = 7500
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(999999, 1)
 
 [node name="Reload_ammo" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+
+[node name="BulletSpawnPoints" type="Node2D" parent="."]
+
+[node name="Pos_1" type="Marker2D" parent="BulletSpawnPoints"]
+position = Vector2(51, 4)
+
+[node name="Pos_2" type="Marker2D" parent="BulletSpawnPoints"]
+position = Vector2(51, -4)
+
+[node name="Pos_3" type="Marker2D" parent="BulletSpawnPoints"]
+position = Vector2(51, 0)
 
 [connection signal="timeout" from="Reload_ammo" to="." method="_on_reload_ammo_timeout"]
