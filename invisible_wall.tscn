@@ -5,6 +5,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig4v0"]
 
 [node name="Invisible_wall" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(5000, 1)
