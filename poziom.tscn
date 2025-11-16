@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://cci2koy7k1tab"]
+[gd_scene load_steps=3 format=3 uid="uid://cci2koy7k1tab"]
+
+[ext_resource type="PackedScene" uid="uid://dn2lxnpoe2sa3" path="res://player.tscn" id="1_7vjd5"]
+[ext_resource type="Texture2D" uid="uid://xxf67875b5uj" path="res://floor.jpg" id="1_rxvtt"]
 
 [node name="Poziom" type="Node2D"]
+
+[node name="Ground" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("1_rxvtt")
+region_enabled = true
+region_rect = Rect2(-3352.12, -1908.45, 7268.42, 4097.5)
+
+[node name="player" parent="." instance=ExtResource("1_7vjd5")]
