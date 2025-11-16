@@ -122,6 +122,8 @@ text = "MENU"
 
 [node name="Kill_area1" type="Area2D" parent="."]
 position = Vector2(-1242, -623)
+collision_layer = 8
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Kill_area1"]
 position = Vector2(-7323, -131)
@@ -130,6 +132,8 @@ shape = SubResource("RectangleShape2D_nyq13")
 
 [node name="Kill_area2" type="Area2D" parent="."]
 position = Vector2(-1242, -623)
+collision_layer = 8
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Kill_area2"]
 position = Vector2(9814, 624)
@@ -138,6 +142,8 @@ shape = SubResource("RectangleShape2D_nyq13")
 
 [node name="Kill_area3" type="Area2D" parent="."]
 position = Vector2(-1242, -623)
+collision_layer = 8
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Kill_area3"]
 position = Vector2(1242, -7985)
@@ -147,6 +153,8 @@ shape = SubResource("RectangleShape2D_nyq13")
 
 [node name="Kill_area4" type="Area2D" parent="."]
 position = Vector2(-1242, -623)
+collision_layer = 8
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Kill_area4"]
 position = Vector2(1242, 9219)
@@ -154,10 +162,10 @@ rotation = 1.5708
 scale = Vector2(20, 1000)
 shape = SubResource("RectangleShape2D_nyq13")
 
+[node name="shotgun" type="Timer" parent="."]
+autostart = true
+
 [connection signal="laser" from="player" to="." method="_on_player_laser"]
 [connection signal="timeout" from="Timer" to="Enemies" method="_on_timer_timeout"]
 [connection signal="pressed" from="Reset/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="body_entered" from="Kill_area1" to="." method="_on_kill_area_1_body_entered"]
-[connection signal="body_entered" from="Kill_area2" to="." method="_on_kill_area_2_body_entered"]
-[connection signal="body_entered" from="Kill_area3" to="." method="_on_kill_area_3_body_entered"]
-[connection signal="body_entered" from="Kill_area4" to="." method="_on_kill_area_4_body_entered"]
+[connection signal="timeout" from="shotgun" to="." method="_on_shotgun_timeout"]
