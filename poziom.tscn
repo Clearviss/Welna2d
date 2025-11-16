@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cci2koy7k1tab"]
+[gd_scene load_steps=8 format=3 uid="uid://cci2koy7k1tab"]
 
 [ext_resource type="PackedScene" uid="uid://dn2lxnpoe2sa3" path="res://player.tscn" id="1_7vjd5"]
+[ext_resource type="Script" path="res://poziom.gd" id="1_il06s"]
 [ext_resource type="Texture2D" uid="uid://xxf67875b5uj" path="res://floor.jpg" id="1_rxvtt"]
 [ext_resource type="Script" path="res://Enemies.gd" id="3_csidb"]
 [ext_resource type="PackedScene" uid="uid://bbe1t1rxs5dxq" path="res://enemy.tscn" id="3_hc2pc"]
@@ -9,6 +10,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0nha7"]
 
 [node name="Poziom" type="Node2D"]
+script = ExtResource("1_il06s")
 
 [node name="Ground" type="Sprite2D" parent="."]
 texture_repeat = 2
@@ -16,13 +18,21 @@ texture = ExtResource("1_rxvtt")
 region_enabled = true
 region_rect = Rect2(-20000, -812.853, 20000, 20000)
 
+[node name="Projectiles" type="Node2D" parent="."]
+
 [node name="player" parent="." instance=ExtResource("1_7vjd5")]
 
-[node name="SpawnArea" type="ReferenceRect" parent="player"]
-offset_left = -684.0
-offset_top = -418.0
-offset_right = 714.0
-offset_bottom = 421.0
+[node name="SpawnEnemy_x_1" type="Node2D" parent="player"]
+position = Vector2(10, -426)
+
+[node name="SpawnEnemy_x_2" type="Node2D" parent="player"]
+position = Vector2(5, 408)
+
+[node name="SpawnEnemy_y_1" type="Node2D" parent="player"]
+position = Vector2(715, -2)
+
+[node name="SpawnEnemy_y_2" type="Node2D" parent="player"]
+position = Vector2(-703, -2)
 
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource("3_csidb")
@@ -56,4 +66,5 @@ rotation = 1.5708
 scale = Vector2(725, 725)
 shape = SubResource("RectangleShape2D_0nha7")
 
+[connection signal="laser" from="player" to="." method="_on_player_laser"]
 [connection signal="timeout" from="Timer" to="Enemies" method="_on_timer_timeout"]

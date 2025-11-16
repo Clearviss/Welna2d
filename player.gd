@@ -1,24 +1,22 @@
 extends CharacterBody2D
-@onready var raycast = $RayCast2D
 var shoot = false
-
+signal laser(laser_pos, player_direction)
 func _ready():
-	await get_tree()
-	get_tree().call_group("zombies", "set_player", self)
+	pass
 
 func _process(delta):
 	var direction = Input.get_vector('move_left',"move_right","move_up","move_down")
 	velocity = direction * 500
 	move_and_slide()
-	$SpawnArea.position = position
 	
 	
+	var gracz_direction = (get_global_mouse_position() - position).normalized()
 	look_at(get_global_mouse_position())
 	if Input.is_action_pressed("primary_action") and shoot:
-		shoot = false;
-		var coll = raycast.get_collider()
-		if raycast.is_colliding() and coll.has_method("kill"):
-			coll.kill()
+		shoot = false
+		var bullet_startPos = $BulletSpawnPoints.get_children()
+		var selected_fuckme_bullet = bullet_startPos[randi() % bullet_startPos.size()]
+		laser.emit(selected_fuckme_bullet.global_position, gracz_direction)
  
 
 
