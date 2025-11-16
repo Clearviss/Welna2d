@@ -1,15 +1,16 @@
-extends CharacterBody2D
+extends RigidBody2D
 
 
 const MOVE_SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var health = 2
- 
+
 var player = null
 
 func hit():
 	if health <= 0:
 		queue_free()
+		Globals.score += 1
 	else:
 		health=-1
 		$Sprite2D.modulate = Color(3,0,0)
@@ -27,4 +28,5 @@ func _physics_process(delta):
 	vec_to_player = vec_to_player.normalized()
 	move_and_collide(vec_to_player * MOVE_SPEED * delta)
 	look_at(player_pos)
+
 

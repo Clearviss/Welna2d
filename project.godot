@@ -11,9 +11,22 @@ config_version=5
 [application]
 
 config/name="Welna 2d"
-run/main_scene="res://poziom.tscn"
+run/main_scene="res://menu.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Globals="*res://globals.gd"
+
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=720
+
+[gui]
+
+theme/custom_font="res://clements-morgle-script/Clements Morgle Serif.otf"
 
 [input]
 

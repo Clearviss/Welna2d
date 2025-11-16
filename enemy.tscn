@@ -1,14 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbe1t1rxs5dxq"]
+[gd_scene load_steps=6 format=3 uid="uid://bbe1t1rxs5dxq"]
 
 [ext_resource type="Texture2D" uid="uid://dfih0eny0ulhp" path="res://enemy.png" id="1_4hwd4"]
 [ext_resource type="Script" path="res://enemy.gd" id="1_ks015"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ex6dk"]
+friction = 0.0
+bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p5s2l"]
 radius = 27.0185
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j1ci3"]
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 15
+inertia = 2.87
+physics_material_override = SubResource("PhysicsMaterial_ex6dk")
+gravity_scale = 0.0
 script = ExtResource("1_ks015")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -17,3 +26,6 @@ shape = SubResource("CircleShape2D_p5s2l")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_j1ci3")
 texture = ExtResource("1_4hwd4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

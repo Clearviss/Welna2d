@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://qdwgveiy687j"]
+
+[ext_resource type="Theme" uid="uid://c1neggeg2ag84" path="res://menu.tres" id="1_44kd4"]
+[ext_resource type="Script" path="res://restart.gd" id="1_s41wa"]
+
+[node name="Reset" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s41wa")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -34.0
+offset_right = 106.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_44kd4")
+text = "Restart"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,12 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dn2lxnpoe2sa3"]
+[gd_scene load_steps=5 format=3 uid="uid://dn2lxnpoe2sa3"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_l3a2w"]
 [ext_resource type="Texture2D" uid="uid://c231rgxw06aj4" path="res://player.png" id="1_ntynm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_caw6y"]
-radius = 24.0208
+radius = 18.0278
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4kq68"]
+radius = 22.0227
 
 [node name="player" type="CharacterBody2D"]
+collision_mask = 6
 script = ExtResource("1_l3a2w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -40,4 +44,18 @@ position = Vector2(51, -4)
 [node name="Pos_3" type="Marker2D" parent="BulletSpawnPoints"]
 position = Vector2(51, 0)
 
+[node name="hurt" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurt"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_4kq68")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
 [connection signal="timeout" from="Reload_ammo" to="." method="_on_reload_ammo_timeout"]
+[connection signal="area_entered" from="hurt" to="." method="_on_hurt_area_entered"]
+[connection signal="body_entered" from="hurt" to="." method="_on_hurt_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
