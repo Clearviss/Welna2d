@@ -1,1 +1,0 @@
-# Uwaga bardzo brzydki kod!!!
